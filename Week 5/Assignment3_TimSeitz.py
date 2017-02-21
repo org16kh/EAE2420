@@ -45,12 +45,33 @@ class LinkedList:
     # Inserts value into a new node
     # after the given node
     def insertAfter(self, node, value):
-        pass
+        currentNode = self.head
+        while currentNode:
+            if node == currentNode:
+                tempNode = currentNode
+                tempNext = currentNode.next
+                currentNode = node
+                currentNode.next = tempNode
+                node.next = tempNext
+
+            else:
+                currentNode = currentNode.next
 
     # Inserts value into a new node
     # before the given node
     def insertBefore(self, node, value):
-        pass
+        currentNode = self.head
+        previousNode = None
+        while currentNode:
+            if node == currentNode:
+                tempNode = currentNode
+                node.next = currentNode
+                currentNode.next = tempNode.next
+                previousNode.next = node
+
+            else:
+                currentNode = currentNode.next
+                previousNode = currentNode
 
     # Adds the given value as the first
     # value in the list
@@ -61,7 +82,7 @@ class LinkedList:
     # Adds the given value as the last
     # value in the list
     def addLast(self, value):
-        pass
+        self.head = Node()
 
     # Returns the node that contains
     # the given value
