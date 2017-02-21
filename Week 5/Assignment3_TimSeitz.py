@@ -36,6 +36,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.prev = None
 
 class LinkedList:
     def __init__(self):
@@ -76,8 +77,9 @@ class LinkedList:
     # Adds the given value as the first
     # value in the list
     def addFirst(self, value):
-        newNode = Node(value, self.tail)
+        newNode = Node(value)
         self.tail = newNode
+
 
     # Adds the given value as the last
     # value in the list
@@ -101,6 +103,12 @@ class LinkedList:
         lastNode = None
         while currentNode:
             if currentNode == node:
+                lastNode.next = currentNode.next
+
+            else:
+                lastNode = currentNode
+                currentNode = currentNode.next
+
 
 
 
